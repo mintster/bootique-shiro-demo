@@ -1,0 +1,44 @@
+--
+-- Table structure for table roles
+--
+
+DROP TABLE IF EXISTS roles;
+CREATE TABLE roles (
+  role_id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  permission VARCHAR(80) DEFAULT NULL,
+  role_name VARCHAR(45) DEFAULT NULL
+);
+
+--
+-- Table structure for table users
+--
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+  user_id BIGINT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(45) DEFAULT NULL,
+  email VARCHAR(128) DEFAULT NULL,
+  password VARCHAR(255) DEFAULT NULL
+) ;
+
+--
+-- Table structure for table user_roles
+--
+
+DROP TABLE IF EXISTS user_roles;
+CREATE TABLE user_roles (
+  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  role_name VARCHAR(45) DEFAULT NULL,
+  username VARCHAR(45) DEFAULT NULL
+);
+
+INSERT INTO users (username, email, password) VALUES ('bob', 'bob@aol.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8');
+INSERT INTO users (username, email, password) VALUES ('ken', 'ken@aol.com', 'a4e63bcacf6c172ad84f9f4523c8f1acaf33676fa76d3258c67b7e7bbf16d777');
+
+INSERT INTO roles (permission, role_name) VALUES ('nixmash:all', 'admin');
+INSERT INTO roles (permission, role_name) VALUES ('nixmash:view', 'user');
+
+INSERT INTO user_roles (role_name, username) VALUES ('admin', 'bob');
+INSERT INTO user_roles (role_name, username) VALUES ('user', 'bob');
+INSERT INTO user_roles (role_name, username) VALUES ('user', 'ken');
+

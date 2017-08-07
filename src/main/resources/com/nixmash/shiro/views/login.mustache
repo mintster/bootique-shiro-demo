@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootique Mvc Mustache Demo</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Page Content -->
+<div>
+    <h1>Login Page</h1>
+
+    <form action="login" method="POST">
+        <p>Username: <input name="username"/></p>
+        <p>Password: <input type="password" name="password"/></p>
+        <p><input type="checkbox" name="rememberMe" value="true"/>Remember Me?</p>
+        <p><input type="submit" value="Submit"/></p>
+    </form>
+
+    {{#logout?}}LOGOUT!{{/logout?}}
+    <p class="lead">Accounts:</p>
+    <ul>
+        <li><strong>admin:</strong> <em>bob/password</em></li>
+        <li><strong>user:</strong> <em>ken/halo</em></li>
+    </ul>
+
+    {{> com/nixmash/shiro/views/fragments/footer.mustache }}
+
+        {{#model.hasMessage}}
+            <p class="error">There was a problem with your login information. Please try again.</p>
+        {{/model.hasMessage}}
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+body {
+    margin: 60px;
+    font-family: Ubuntu, Tahoma, Arial, Helvetica;
+    font-size: 16px;
+}
+
+p.links {
+    margin-top: 60px;
+}
+.footer {
+    margin-top: 40px;
+}
+.currentuser {
+    color: #666;
+}
+.cuItem {
+
+}
+.cuLabel {
+    float: left;
+    display: inline-block;
+    margin-right: 5px;
+    font-weight: bold;
+}
+.cuValue {
+
+}
