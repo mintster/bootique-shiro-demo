@@ -3,6 +3,7 @@ package com.nixmash.shiro;
 import com.google.inject.Binder;
 import com.google.inject.Module;
 import com.nixmash.shiro.auth.NixmashRealm;
+import com.nixmash.shiro.auth.RoleFilter;
 import com.nixmash.shiro.controller.GeneralController;
 import com.nixmash.shiro.db.UsersDb;
 import com.nixmash.shiro.db.UsersDbImpl;
@@ -12,6 +13,7 @@ import io.bootique.Bootique;
 import io.bootique.jersey.JerseyModule;
 import io.bootique.jetty.JettyModule;
 import io.bootique.shiro.ShiroModule;
+import io.bootique.shiro.web.ShiroWebModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +46,7 @@ public class Launcher implements Module {
         JerseyModule.extend(binder).addPackage(pkg);
         JettyModule.extend(binder).addStaticServlet("s1", "/css/*", "/img/*", "/js/*", "/fonts/*");
         ShiroModule.extend(binder).addRealm(NixmashRealm.class);
+        ShiroWebModule.extend(binder).setFilter("roles", RoleFilter.class);
     }
-
 
 }

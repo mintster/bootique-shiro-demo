@@ -21,12 +21,14 @@ public class NixmashRealm extends AuthorizingRealm {
     private static final Logger logger = LoggerFactory.getLogger(NixmashRealm.class);
 
     private UserService userService;
-    private HashedCredentialsMatcher authenticator = new HashedCredentialsMatcher(Sha256Hash.ALGORITHM_NAME);
 
     @Inject
     public NixmashRealm(UserService userService) {
         setName("nixmashRealm");
         this.userService = userService;
+
+        HashedCredentialsMatcher authenticator =
+                new HashedCredentialsMatcher(Sha256Hash.ALGORITHM_NAME);
         this.setCredentialsMatcher(authenticator);
     }
 
@@ -52,12 +54,10 @@ public class NixmashRealm extends AuthorizingRealm {
         try {
 
             final User user = userService.getUser(username);
-
             if (user == null) {
                 System.out.println("No account found for user [" + username + "]");
                 return null;
             }
-
             info = new SimpleAuthenticationInfo(username, user.getPassword(),  getName());
         } catch (AuthenticationException e) {
             final String message = "There was an error while authenticating user [" + username + "]";
@@ -65,7 +65,6 @@ public class NixmashRealm extends AuthorizingRealm {
                 logger.error(message, e);
             }
         }
-
         return info;
     }
 }

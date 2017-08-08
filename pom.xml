@@ -51,17 +51,6 @@
         <dependency>
             <groupId>io.bootique.shiro</groupId>
             <artifactId>bootique-shiro-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.shiro</groupId>
-                    <artifactId>shiro-web</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-web</artifactId>
-            <version>1.4.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.bootique.jdbc</groupId>
