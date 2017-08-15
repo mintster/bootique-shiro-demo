@@ -35,7 +35,8 @@ public class NixmashRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 
-        List<Role> roles = userService.getRoles(principals.getPrimaryPrincipal().toString());
+        Long userid = userService.getUser(principals.getPrimaryPrincipal().toString()).getUserId();
+        List<Role> roles = userService.getRoles(userid);
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         for (Role role : roles) {
             info.addStringPermission(role.getPermission());

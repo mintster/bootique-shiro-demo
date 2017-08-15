@@ -21,6 +21,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.number.OrderingComparison.greaterThan;
+
 @RunWith(JUnit4.class)
 public class UsersDbTest {
 
@@ -53,17 +56,18 @@ public class UsersDbTest {
     }
 
     @Test
-    public void addUserTest() throws Exception {
-        User jammer = new User("jammer", "jammer@aol.com", "password");
+    public void newUserAddsTotalByOneTest() throws Exception {
+        User jammer = new User("jammer", "jammer@aol.com", "Jammer", "McGee","password");
         User saved = userService.createUser(jammer);
 
         User retrieved = userService.getUser("jammer");
+        assertThat(saved.getUserId().intValue(), greaterThan(0));
         Assert.assertEquals(saved.getUserId(), retrieved.getUserId());
     }
 
     @Test
     public void addSecondUserTest() throws Exception {
-        User reed = new User("reed", "reed@aol.com", "halo");
+        User reed = new User("reed", "reed@aol.com", "Reed", "Larson", "halo");
         User saved = userService.createUser(reed);
 
         User retrieved = userService.getUser("reed");
@@ -72,7 +76,7 @@ public class UsersDbTest {
 
     @Test
     public void permissionsTest() throws Exception {
-        List<Role> roles = userService.getRoles("bob");
+        List<Role> roles = userService.getRoles(1L);
         Assert.assertEquals(roles.size(), 2);
     }
 

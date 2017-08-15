@@ -21,7 +21,7 @@ public class GeneralController {
 
     @GET
     public PageView home() {
-        User user = new User("bob", "bob@aol.com", "password");
+        User user = new User("bob", "bob@aol.com", "Bob", "Planter","password");
         return new PageView("home.mustache", user);
     }
 

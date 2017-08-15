@@ -29,13 +29,12 @@ public class UsersDbImpl implements UsersDb {
     }
 
     @Override
-    public List<Role> getRoles(String username) {
+    public List<Role> getRoles(Long userId) {
         List<Role> roles = new ArrayList<>();
         try (Connection cn = dataSource.forName(appConfig.datasourceName).getConnection()) {
             try (Statement statement = cn.createStatement()) {
-                String getRolesSql = "SELECT user_roles.username, roles.permission, user_roles.role_name " +
-                        "FROM  user_roles INNER JOIN roles ON user_roles.role_name = roles.role_name " +
-                        "WHERE user_roles.username = '" + username + "'";
+                String getRolesSql = "SELECT user_roles.user_id, roles.permission, roles.role_name FROM  user_roles " +
+                        "INNER JOIN roles ON user_roles.role_id = roles.role_id WHERE user_roles.user_id ='" + userId + "'";
                 ResultSet rs = statement.executeQuery(getRolesSql);
                 rs.beforeFirst();
                 while (rs.next()) {
@@ -63,6 +62,8 @@ public class UsersDbImpl implements UsersDb {
                 while (rs.next()) {
                     user.setUserId(rs.getLong("user_id"));
                     user.setUsername(rs.getString("username"));
+                    user.setFirstName(rs.getString("first_name"));
+                    user.setLastName(rs.getString("last_name"));
                     user.setPassword(rs.getString("password"));
                     user.setEmail(rs.getString("email"));
                 }
@@ -81,9 +82,11 @@ public class UsersDbImpl implements UsersDb {
         try (Connection connection = dataSource.forName(appConfig.datasourceName).getConnection()) {
 
             try (Statement statement = connection.createStatement()) {
-                String createUserSql = "INSERT INTO users (username, email, password) VALUES " +
+                String createUserSql = "INSERT INTO users (username, email, first_name, last_name, password) VALUES " +
                         "('" + user.getUsername() + "', " +
                         "'" + user.getEmail() + "', " +
+                        "'" + user.getFirstName() + "', " +
+                        "'" + user.getLastName() + "', " +
                         "'" + user.getPassword() + "'" +
                         ")";
                 int result = statement.executeUpdate(createUserSql, Statement.RETURN_GENERATED_KEYS);

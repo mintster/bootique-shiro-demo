@@ -9,14 +9,18 @@ public class User implements Serializable {
 	private Long user_id;
 	private String username;
 	private String email;
+	private String firstName;
+	private String lastName;
 	private String password;
 
 	public User() {
 	}
 
-	public User(String username, String email, String password) {
+	public User(String username, String email, String firstName, String lastName, String password) {
 		this.username = username;
 		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.password = password;
 	}
 
@@ -31,7 +35,6 @@ public class User implements Serializable {
 	public String getEmail() {
 		return email;
 	}
-
 
 	public String getPassword() {
 		return password;
@@ -53,6 +56,21 @@ public class User implements Serializable {
 		this.username = username;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
 	@Override
 	public String toString() {
@@ -60,6 +78,8 @@ public class User implements Serializable {
 				"user_id=" + user_id +
 				", username='" + username + '\'' +
 				", email='" + email + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
 				", password='" + password + '\'' +
 				'}';
 	}

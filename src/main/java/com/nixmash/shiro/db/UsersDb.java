@@ -10,5 +10,5 @@ public interface UsersDb {
     User addUser(User user);
     User getUser(String username);
 
-    List<Role> getRoles(String username);
+    List<Role> getRoles(Long userId);
 }

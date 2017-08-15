@@ -38,15 +38,15 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<Role> getRoles(String username) {
-        return usersDb.getRoles(username);
+    public List<Role> getRoles(Long userId) {
+        return usersDb.getRoles(userId);
     }
 
     @Override
     public CurrentUser createCurrentUser(Subject subject) {
         User user = this.getUser(subject.getPrincipals().toString());
         CurrentUser currentUser = new CurrentUser(user);
-        List<Role> roles = this.getRoles(user.getUsername());
+        List<Role> roles = this.getRoles(user.getUserId());
 
         for (Role role : roles) {
             if (role.getRoleName().equals("admin")) {
