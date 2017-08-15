@@ -19,6 +19,7 @@ public class AppConfig implements Serializable {
 
 	public String applicationId;
 	public String datasourceName;
+	public String unauthorizedUrl;
 
     // endregion
 
@@ -37,6 +38,7 @@ public class AppConfig implements Serializable {
 
 		this.applicationId = properties.getProperty("application.id");
 		this.datasourceName = properties.getProperty("datasource.name");
+		this.unauthorizedUrl = properties.getProperty("shiro.unauthorizedurl");
 
 	}
 

@@ -33,8 +33,7 @@ public class UsersDbImpl implements UsersDb {
         List<Role> roles = new ArrayList<>();
         try (Connection cn = dataSource.forName(appConfig.datasourceName).getConnection()) {
             try (Statement statement = cn.createStatement()) {
-                String getRolesSql = "SELECT " +
-                        "user_roles.username, roles.permission, user_roles.role_name " +
+                String getRolesSql = "SELECT user_roles.username, roles.permission, user_roles.role_name " +
                         "FROM  user_roles INNER JOIN roles ON user_roles.role_name = roles.role_name " +
                         "WHERE user_roles.username = '" + username + "'";
                 ResultSet rs = statement.executeQuery(getRolesSql);

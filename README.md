@@ -11,6 +11,8 @@ Simple [Bootique](http://bootique.io) Shiro demo containing the following Bootiq
 
 - [A Bootique Shiro Demo Application](http://nixmash.com/post/a-bootique-shiro-demo-application)
 - [A Custom Shiro Realm Example with Bootique](http://nixmash.com/post/a-custom-shiro-realm-example-with-bootique)
+- [Custom Role Filters with Bootique Shiro Web](http://nixmash.com/post/custom-role-filters-with-bootique-shiro-web)
+- [Using Encrypted Passwords in Shiro](http://nixmash.com/post/using-encrypted-passwords-in-shiro)
 
 ## Installation
 
