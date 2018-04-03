@@ -6,12 +6,13 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = -4746333924452133573L;
 
-	private Long user_id;
+	private Long userId;
 	private String username;
 	private String email;
 	private String firstName;
 	private String lastName;
 	private String password;
+	private Boolean enabled;
 
 	public User() {
 	}
@@ -25,35 +26,27 @@ public class User implements Serializable {
 	}
 
 	public Long getUserId() {
-		return user_id;
+		return userId;
 	}
 
-	public void setUserId(Long user_id) {
-		this.user_id = user_id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public String getPassword() {
-		return password;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getUsername() {
 		return username;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getFirstName() {
@@ -72,15 +65,32 @@ public class User implements Serializable {
 		this.lastName = lastName;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
-				"user_id=" + user_id +
+				"user_id=" + userId +
 				", username='" + username + '\'' +
 				", email='" + email + '\'' +
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
 				", password='" + password + '\'' +
+				", enabled=" + enabled +
 				'}';
 	}
 }

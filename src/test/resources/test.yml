@@ -1,6 +1,7 @@
 jetty:
-  connector:
-    port: 9001
+  connectors:
+  -
+    port: 8001
 
 mvc:
   templateBase: "classpath:"

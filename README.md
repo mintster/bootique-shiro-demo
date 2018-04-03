@@ -2,7 +2,7 @@ Simple [Bootique](http://bootique.io) Shiro demo containing the following Bootiq
  
 - Bootique Jetty
 - Bootique MVC, with Jersey and Mustache.
-- Bootique JDBC
+- Bootiquze JDBC
 - Bootique Shiro Web
 
 ![Bootique Shiro Demo App Home Page](http://nixmash.com/x/blog/2017/shiro0808a.png)
